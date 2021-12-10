@@ -12,17 +12,13 @@ $dbname = 'yvh5398_431W';
 $rating = $_POST['rating'];
 $language = $_POST['language'];
 
+
+
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // $seller = "SELECT `S.sellerID`, `S.fname`, `S.lname`, `R.rating`, `LA.language`, `LO.state` FROM `Seller S`, `Review R`, `Language LA`, `Location LO` WHERE LO.locationID=S.locationID and R.reviewID=S.reviewID and LA.languageID=S.languageID and R.rating>=$rating and LA.language=$language ";
-    $seller = "SELECT `S.sellerID`, `S.fname`, `S.lname`, `R.rating`, `LA.language`, `LO.state` FROM `Seller S`, `Review R`, `Language LA`, `Location LO`";
+    $seller = "SELECT Seller.sellerID, Seller.fname, Seller.lname, Review.rating, Language.language, Location.state FROM `Seller`, `Review`, `Language`, `Location` WHERE Location.locationID=Seller.locationID and Review.reviewID=Seller.reviewID and Language.languageID=Seller.languageID and Language.language='$language' and Review.rating>='$rating' ";
     $q = $pdo->query($seller);
-    if (!$q) {
-        echo "\nPDO::errorInfo():\n";
-        print_r($q->errorInfo());
-    } else {    
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-    }
+    $q->setFetchMode(PDO::FETCH_ASSOC);
 } 
 catch (PDOException $e) {
     die("Could not connect to the database $dbname :" . $e->getMessage());
