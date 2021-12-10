@@ -52,6 +52,10 @@ catch (PDOException $e) {
 
                 <input type="submit" value="Search"></input>
             </form>
+            
+            <form action="seller.php" method="GET">
+                <input type="submit" value="Add">
+            </form>
 
             
             <br><br><br>
