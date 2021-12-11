@@ -52,10 +52,15 @@ catch (PDOException $e) {
                             <td><?php echo htmlspecialchars($row['rating']); ?></td>
                             <td><?php echo htmlspecialchars($row['language']); ?></td>
                             <td><?php echo htmlspecialchars($row['state']); ?></td>
+                            <td><?php echo '<form action="/seller.php" method="POST"><input type="submit" value="UPDATE"><input type="hidden" name="sellerID" value="' . htmlspecialchars($row['sellerID']) . '"></form>'; ?></td>
+                            <td><?php echo '<form action="/deleteSeller.php" method="POST"><input type="submit" value="DELETE"><input type="hidden" name="sellerID" value="' . htmlspecialchars($row['sellerID']) . '"></form>'; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
             </table>
+            <form action="start.php" method="GET">
+                <input type="submit" value="Back">
+            </form>
         </div>
     </body>
 

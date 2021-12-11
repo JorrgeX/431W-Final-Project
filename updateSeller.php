@@ -1,3 +1,4 @@
+<!-- updateSeller -->
 <!-- deleteSeller -->
 
 <?php
@@ -12,6 +13,11 @@ $host = 'localhost';
 $dbname = 'yvh5398_431W';
 
 $sellerID = $_POST["sellerID"];
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$location = $_POST['location'];
+$language = $_POST['language'];
+$rating = $_POST['rating'];
 
 ?>
 <!DOCTYPE html>
@@ -22,13 +28,13 @@ $sellerID = $_POST["sellerID"];
     <body>
 		<p>
 			<?php 
-				echo "Deleting user: " . $sellerID . "..."; 
-				$sql = "DELETE FROM Seller WHERE sellerID = '$sellerID' ";
+				echo "Updating user: " . $sellerID . "..."; 
+				$sql = "UPDATE Seller SET fname='$fname', lname='$lname', reviewID='$rating', languageID='$language', locationID='$location' WHERE sellerID='$sellerID' ";
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$conn->exec($sql);
-					echo "User deleted successfully";
+					echo "User updated successfully";
 				?>
 				<p>You will be redirected in 3 seconds</p>
 				<script>

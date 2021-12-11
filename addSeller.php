@@ -25,7 +25,7 @@ $rating = $_POST['rating'];
 		<p>
 			<?php 
 				echo "Inserting new seller: " . $fname . " " . $lname . " ..."; 
-				$sql = "INSERT INTO Seller (fname, lname, reviewID, languageID, locationID) VALUES ('$fname', '$lname', '$review', '$language', '$location')";
+				$sql = "INSERT INTO Seller (fname, lname, reviewID, languageID, locationID) VALUES ('$fname', '$lname', '$rating', '$language', '$location')";
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
