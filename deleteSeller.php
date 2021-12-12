@@ -23,10 +23,12 @@ $sellerID = $_POST["sellerID"];
 		<p>
 			<?php 
 				echo "Deleting user: " . $sellerID . "..."; 
+				$sql2 = "DELETE FROM SellerItem WHERE sellerID = '$sellerID' ";
 				$sql = "DELETE FROM Seller WHERE sellerID = '$sellerID' ";
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+					$conn->exec($sql2);
 					$conn->exec($sql);
 					echo "User deleted successfully";
 				?>

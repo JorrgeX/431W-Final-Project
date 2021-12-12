@@ -1,5 +1,3 @@
-<!--updateItem-->
-
 <?php
 
 ini_set('display_errors', 1);
@@ -24,14 +22,15 @@ $itemID = $_POST['itemID'];
     <body>
 		<p>
 			<?php 
-				echo "Updating item: " . $itemID . "..."; 
-				$sql = "UPDATE SellerItem SET sellerID='$sellerID', itemID='$itemID' WHERE sellerID='$sellerID' ";
+				echo "Updating Seller " . $sellerID . "'s item..."; 
+				$sql = "UPDATE SellerItem SET itemID='$itemID' WHERE sellerID='$sellerID' ";
 				try {
 					$conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 					$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					$conn->exec($sql);
 					echo "Item updated successfully";
 				?>
+                <br>
 				<p>You will be redirected in 3 seconds</p>
 				<script>
 					var timer = setTimeout(function() {

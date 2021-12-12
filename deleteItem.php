@@ -1,12 +1,10 @@
-<!-- deleteItem -->
-
 <?php
 
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-$usernamme = "yvh5398";
+$username = "yvh5398";
 $password = "a245125022";
 $host = "localhost";
 $dbname = "yvh5398_431W";
@@ -23,13 +21,14 @@ $itemID = $_POST["itemID"];
     <body>
         <p>
             <?php
-                echo "Deleting item: " . $itemID . "...";
-                $sql = "DELETE FROM SellerItem WHERE sellerID = $sellerID AND itemID = '$itemID' ";
+                echo "Deleting Seller-Item: " . $sellerID . " " . $itemID . "...";
+                $sql = "DELETE FROM SellerItem WHERE sellerID = '$sellerID' AND itemID = '$itemID' ";
                 try {
-                    $conn = new PDO("mysql:host = $host; dbname = $dbname", $username, $password);
-                    $conn->setAttribte(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $conn->exec($sql);
-                    echo "Item deleted successfully";
+                    echo "<br>";
+                    echo "Seller-Item deleted successfully";
             ?>
 
                 <p>You will be redirected in 3 seconds</p>
@@ -49,4 +48,3 @@ $itemID = $_POST["itemID"];
     </body>
 </div>
 </html>
-
