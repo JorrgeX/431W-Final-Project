@@ -101,18 +101,10 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
                     <?php if ($_SERVER['REQUEST_METHOD']==='POST'): ?>
                         <?php echo '<input type="hidden" name="sellerID" value="'.$sellerID.'">' ?>
                     <?php endif; ?>
-                    
+
                     <br>
                     <input type="submit" value="Submit">
                 </form>
-
-            
-            <!-- <?php if ($_SERVER['REQUEST_METHOD']==='POST'): ?>
-                <form action="updateSeller.php">
-                    <input type="submit" value="Update">
-                    <?php echo '<input type="hidden" name="sellerID" value="'.$sellerID.'">' ?>
-                </form>
-            <?php endif; ?> -->
 
             <form action="start.php" method="GET">
                 <input type="submit" value="Back">

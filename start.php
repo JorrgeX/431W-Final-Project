@@ -10,6 +10,7 @@ $host = 'localhost';
 $dbname = 'yvh5398_431W';
 
 try {
+    // select langauge from database
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $language = 'SELECT `language` FROM `Language`';
     $q = $pdo->query($language);
@@ -26,12 +27,12 @@ catch (PDOException $e) {
     </head>
     <body>
         <div id="container">
-            <h2>Sellers</h2>
+            <h2>Search Sellers</h2>
 
+            <!-- add Seller -->
             <form action="listSeller.php" method="POST">
                 Rating(above)
-                <select name='rating'>
-                    <option disabled selected>--Select rating--</option>
+                <select name='rating' required>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -42,8 +43,8 @@ catch (PDOException $e) {
                 <br>
                 Langauge
                 <?php
-                echo "<select name=\"language\">"; 
-                echo "<option disabled selected>--Select language--</option>";
+                echo "<select name=\"language\" required>"; 
+                // query language options from database
                 while($row = $q->fetch()) {        
                     echo "<option value='" . $row['language'] . "'>" . $row['language'] . "</option>"; 
                 }
@@ -59,7 +60,40 @@ catch (PDOException $e) {
 
             
             <br><br><br>
-            <h2>Item</h2>
+            <h2>Search Items</h2>
+
+            <!-- add Item -->
+            <form action="listItem.php" method="POST">
+
+                <label for="sellerID">Seller ID:</label>   
+                <input type="number" name="sellerID"> 
+
+                <label for="country">Country</label>
+                <select name='rating' required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <br>
+                Langauge
+                <?php
+                echo "<select name=\"language\" required>"; 
+                // query language options from database
+                while($row = $q->fetch()) {        
+                    echo "<option value='" . $row['language'] . "'>" . $row['language'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
+
+                <input type="submit" value="Search"></input>
+            </form>
+            
+            <form action="seller.php" method="GET">
+                <input type="submit" value="Add">
+            </form>
             
             <br>
             <br><br><br>
