@@ -9,8 +9,8 @@ $password = 'a245125022';
 $host = 'localhost';
 $dbname = 'yvh5398_431W';
 
-$fname = $_POST['sellerID'];
-$lname = $_POST['itemID'];
+$sellerID = $_POST['sellerID'];
+$itemID = $_POST['itemID'];
 
 ?>
 <!DOCTYPE html>
